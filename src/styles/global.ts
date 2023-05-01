@@ -28,4 +28,8 @@ export const GlobalStyles = createGlobalStyle`
     outline: 0;
     box-shadow: none;
   }
+
+  ::selection {
+    background-color: ${({ theme }) => theme['yellow-light']};
+  }
 `
