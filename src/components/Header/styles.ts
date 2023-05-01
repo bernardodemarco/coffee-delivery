@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
-  width: 100%;
   padding: 2rem 0;
 
   display: flex;
@@ -19,8 +18,8 @@ export const LocationCard = styled.div`
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  border-radius: 6px;
   padding: 0.5rem;
+  border-radius: 6px;
   background-color: ${({ theme }) => theme['purple-light']};
 
   & > span {
@@ -36,6 +35,8 @@ export const LocationCard = styled.div`
 `
 
 export const ShoppingCartCard = styled.div`
+  position: relative;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,5 +48,25 @@ export const ShoppingCartCard = styled.div`
 
   & > svg {
     color: ${({ theme }) => theme['yellow-dark']};
+  }
+
+  span {
+    position: absolute;
+    top: -21.075%;
+    right: -21.99%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+
+    background-color: ${({ theme }) => theme['yellow-dark']};
+    color: ${({ theme }) => theme.white};
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-align: center;
   }
 `
