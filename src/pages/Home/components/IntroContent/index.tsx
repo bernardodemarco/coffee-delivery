@@ -5,7 +5,7 @@ import {
   TextContainer,
 } from './styles'
 import { ShoppingCart, Timer, Package, Coffee } from '@phosphor-icons/react'
-import coffeeImage from './../../../../assets/coffee-image.png'
+import coffeeImage from './../../../../assets/main-coffee-image.png'
 
 import {
   IconBackgroundColors,

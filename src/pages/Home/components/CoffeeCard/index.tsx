@@ -1,5 +1,4 @@
 import { Plus, Minus, ShoppingCartSimple } from '@phosphor-icons/react'
-import coffeeImage from './../../../../assets/expresso-tradicional.png'
 import {
   BuyContainer,
   Card,
@@ -8,20 +7,43 @@ import {
   Label,
 } from './styles'
 
-export const CoffeeCard = () => {
+export interface CoffeeCardProps {
+  imageSource: string
+  labels: ('tradicional' | 'gelado' | 'com leite' | 'especial' | 'alcoólico')[]
+  title: string
+  description: string
+  price: number
+}
+
+export const CoffeeCard = ({
+  imageSource,
+  labels,
+  title,
+  description,
+  price,
+}: CoffeeCardProps) => {
+  const priceDigits = String(price).split('.')
+
   return (
     <Card>
-      <img src={coffeeImage} alt="" />
-      <Label>Tradicional</Label>
-      <h3>Expresso Tradicional</h3>
-      <p>O tradicional café feito com água quente e grãos moídos</p>
+      <img src={imageSource} alt="" />
+      <div>
+        {labels.map((label) => (
+          <Label key={label}>{label}</Label>
+        ))}
+      </div>
+      <h3>{title}</h3>
+      <p>{description}</p>
       <BuyContainer>
         <span>
-          R$ <strong>9,90</strong>
+          R${' '}
+          <strong>
+            {priceDigits[0]},{priceDigits[1].padEnd(2, '0')}
+          </strong>
         </span>
         <InputContainer>
           <Plus size={14} />
-          <input type="number" />
+          <input type="number" placeholder="0" />
           <Minus size={14} />
         </InputContainer>
         <IconContainer>

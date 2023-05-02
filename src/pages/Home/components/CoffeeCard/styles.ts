@@ -34,14 +34,22 @@ export const Card = styled.article`
     text-align: center;
     color: ${({ theme }) => theme['base-label']};
   }
+
+  & > div:nth-of-type(1) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+
+    margin-bottom: 1rem;
+    margin-top: -0.75rem;
+  }
 `
 
 export const Label = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  margin-bottom: 1rem;
 
   background-color: ${({ theme }) => theme['yellow-light']};
   border-radius: 100px;
@@ -102,6 +110,12 @@ export const InputContainer = styled.div`
 
   svg {
     color: ${({ theme }) => theme.purple};
+    transition: color 0.2s ease-in-out;
+  }
+
+  svg:hover {
+    cursor: pointer;
+    color: ${({ theme }) => theme['purple-dark']};
   }
 `
 
@@ -113,8 +127,14 @@ export const IconContainer = styled.div`
   padding: 0.5rem;
   border-radius: 6px;
   background-color: ${({ theme }) => theme['purple-dark']};
+  transition: background-color 0.2s ease-in-out;
 
   svg {
     color: ${({ theme }) => theme.white};
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: ${({ theme }) => theme.purple};
   }
 `
