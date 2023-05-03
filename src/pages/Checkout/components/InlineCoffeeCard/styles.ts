@@ -1,9 +1,14 @@
 import styled from 'styled-components'
+import { InputContainer as BaseInputContainer } from '../../../Home/components/CoffeeCard/styles'
 
 export const Card = styled.article`
   width: 23rem;
   padding: 0.5rem 0.25rem;
   background-color: ${({ theme }) => theme['base-card']};
+
+  padding-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid ${({ theme }) => theme['base-button']};
 
   display: flex;
   align-items: flex-start;
@@ -11,12 +16,19 @@ export const Card = styled.article`
 
   & > div {
     display: flex;
+    gap: 1.25rem;
 
     img {
       width: 4rem;
       height: 4rem;
-      margin-right: 1.25rem;
     }
+  }
+
+  strong {
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.3;
+    color: ${({ theme }) => theme['base-text']};
   }
 `
 
@@ -25,10 +37,59 @@ export const InfoContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
+  p {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.3;
+    color: ${({ theme }) => theme['base-subtitle']};
+  }
+
   & > div {
     display: flex;
     align-items: center;
   }
 `
 
-export const RemoveContainer = styled.div``
+export const InputContainer = styled(BaseInputContainer)`
+  height: 2rem;
+`
+
+export const RemoveContainer = styled.div`
+  background-color: ${({ theme }) => theme['base-button']};
+  padding: 0 0.5rem;
+  border-radius: 6px;
+  height: 2rem;
+
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  transition: background-color 0.15s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    background-color: ${({ theme }) => theme['base-hover']};
+
+    span {
+      color: ${({ theme }) => theme['base-subtitle']};
+    }
+
+    svg {
+      color: ${({ theme }) => theme['purple-dark']};
+    }
+  }
+
+  svg {
+    color: ${({ theme }) => theme.purple};
+    transition: color 0.15s ease-in-out;
+  }
+
+  span {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: ${({ theme }) => theme['base-text']};
+    transition: color 0.15s ease-in-out;
+  }
+`

@@ -91,6 +91,7 @@ export const InputContainer = styled.div`
   align-items: center;
   gap: 0.25rem;
   padding: 0.5rem;
+  height: 2.375rem;
   border-radius: 6px;
   background-color: ${({ theme }) => theme['base-button']};
 

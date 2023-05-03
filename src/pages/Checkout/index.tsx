@@ -1,5 +1,5 @@
-import { InlineCoffeeCard } from './components/InlineCoffeeCard'
+import { SelectedCoffees } from './components/SelectedCoffees'
 
 export const Checkout = () => {
-  return <InlineCoffeeCard />
+  return <SelectedCoffees />
 }

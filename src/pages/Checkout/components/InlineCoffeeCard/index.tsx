@@ -1,14 +1,13 @@
 import { Minus, Plus, Trash } from '@phosphor-icons/react'
-import { InputContainer } from '../../../Home/components/CoffeeCard/styles'
-import { Card, RemoveContainer, InfoContainer } from './styles'
+import { Card, RemoveContainer, InfoContainer, InputContainer } from './styles'
 
 export const InlineCoffeeCard = () => {
   return (
     <Card>
       <div>
-        <img src="coffee-images/arabe.png" alt="" />
+        <img src="coffee-images/expresso-tradicional.png" alt="" />
         <InfoContainer>
-          <p>title</p>
+          <p>Expresso Tradicional</p>
           <div>
             <InputContainer>
               <Plus size={14} />
@@ -16,13 +15,13 @@ export const InlineCoffeeCard = () => {
               <Minus size={14} />
             </InputContainer>
             <RemoveContainer>
-              <Trash />
+              <Trash size={16} />
               <span>remover</span>
             </RemoveContainer>
           </div>
         </InfoContainer>
       </div>
-      <strong>price</strong>
+      <strong>R$ 9,90</strong>
     </Card>
   )
 }
