@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const SelectedCoffeesContainer = styled.section`
+export const SelectedCoffeesContainer = styled.div`
   width: 28rem;
   background-color: ${({ theme }) => theme['base-card']};
   padding: 2.5rem;
