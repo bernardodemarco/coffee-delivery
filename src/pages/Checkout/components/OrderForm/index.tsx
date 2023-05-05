@@ -1,5 +1,10 @@
 import { CurrencyDollar, MapPinLine } from '@phosphor-icons/react'
-import { FormInfo, FormContainer } from './styles'
+import {
+  FormInfo,
+  FormContainer,
+  InputsContainer,
+  OptionalInput,
+} from './styles'
 
 export const OrderForm = () => {
   return (
@@ -12,15 +17,21 @@ export const OrderForm = () => {
             <p>Informe o endereço onde deseja receber seu pedido</p>
           </div>
         </FormInfo>
-        <div>
+        <InputsContainer>
           <input type="text" placeholder="CEP" />
           <input type="text" placeholder="Rua" />
-          <input type="number" placeholder="Número" />
-          <input type="text" placeholder="Complemento" />
-          <input type="text" placeholder="Bairro" />
-          <input type="text" placeholder="Cidade" />
-          <input type="text" placeholder="UF" />
-        </div>
+          <div>
+            <input type="number" placeholder="Número" />
+            <OptionalInput>
+              <input type="text" placeholder="Complemento" />
+            </OptionalInput>
+          </div>
+          <div>
+            <input type="text" placeholder="Bairro" />
+            <input type="text" placeholder="Cidade" />
+            <input type="text" placeholder="UF" />
+          </div>
+        </InputsContainer>
       </section>
       <section>
         <FormInfo iconColor="purple">
