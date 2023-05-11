@@ -1,19 +1,19 @@
-import { CurrencyDollar, MapPinLine } from '@phosphor-icons/react'
+import {
+  Bank,
+  CreditCard,
+  CurrencyDollar,
+  MapPinLine,
+  Money,
+} from '@phosphor-icons/react'
 import {
   FormInfo,
   FormContainer,
   InputsContainer,
   OptionalInput,
+  PaymentMethod,
 } from './styles'
 
-import { useForm } from 'react-hook-form'
-
 export const OrderForm = () => {
-  const { register, watch } = useForm()
-
-  const complement = watch('complement')
-  const isComplementEmpty = complement.length === 0
-
   return (
     <FormContainer>
       <section>
@@ -29,12 +29,8 @@ export const OrderForm = () => {
           <input type="text" placeholder="Rua" />
           <div>
             <input type="number" placeholder="Número" />
-            <OptionalInput isComplementEmpty={isComplementEmpty}>
-              <input
-                type="text"
-                placeholder="Complemento"
-                {...register('complement')}
-              />
+            <OptionalInput>
+              <input type="text" placeholder="Complemento" />
             </OptionalInput>
           </div>
           <div>
@@ -54,11 +50,23 @@ export const OrderForm = () => {
             </p>
           </div>
         </FormInfo>
-        <div>
-          <input type="radio" />
-          <input type="radio" />
-          <input type="radio" />
-        </div>
+        <PaymentMethod>
+          <input type="radio" id="credit-card" name="payment-method" />
+          <label htmlFor="credit-card">
+            <CreditCard size={16} />
+            <p>cartão de crédito</p>
+          </label>
+          <input type="radio" id="debit-card" name="payment-method" />
+          <label htmlFor="debit-card">
+            <Bank size={16} />
+            <p>cartão de débito</p>
+          </label>
+          <input type="radio" id="cash" name="payment-method" />
+          <label htmlFor="cash">
+            <Money size={16} />
+            <p>dinheiro</p>
+          </label>
+        </PaymentMethod>
       </section>
     </FormContainer>
   )

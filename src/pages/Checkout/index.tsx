@@ -2,5 +2,9 @@
 import { OrderForm } from './components/OrderForm'
 
 export const Checkout = () => {
-  return <OrderForm />
+  return (
+    <form action="">
+      <OrderForm />
+    </form>
+  )
 }

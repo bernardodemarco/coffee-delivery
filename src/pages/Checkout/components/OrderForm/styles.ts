@@ -98,11 +98,11 @@ export const InputsContainer = styled.div`
   }
 `
 
-interface OptionalInputProps {
-  isComplementEmpty: boolean
-}
+// interface OptionalInputProps {
+//   isComplementEmpty: boolean
+// }
 
-export const OptionalInput = styled.div<OptionalInputProps>`
+export const OptionalInput = styled.div`
   position: relative;
   flex: 1;
   display: flex;
@@ -112,9 +112,6 @@ export const OptionalInput = styled.div<OptionalInputProps>`
   }
 
   &::after {
-    display: ${({ isComplementEmpty }) =>
-      isComplementEmpty ? 'block' : 'none'};
-
     content: 'Opcional';
     position: absolute;
     right: 0.75rem;
@@ -126,5 +123,25 @@ export const OptionalInput = styled.div<OptionalInputProps>`
     line-height: 1.3;
     font-weight: 400;
     font-style: italic;
+  }
+`
+
+export const PaymentMethod = styled.div`
+  display: flex;
+
+  input {
+    appearance: none;
+    margin: 0;
+  }
+
+  input:checked + label {
+  }
+
+  label {
+    display: flex;
+
+    svg {
+      color: ${({ theme }) => theme.purple};
+    }
   }
 `
