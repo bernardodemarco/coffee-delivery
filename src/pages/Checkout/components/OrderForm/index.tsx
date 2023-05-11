@@ -6,7 +6,14 @@ import {
   OptionalInput,
 } from './styles'
 
+import { useForm } from 'react-hook-form'
+
 export const OrderForm = () => {
+  const { register, watch } = useForm()
+
+  const complement = watch('complement')
+  const isComplementEmpty = complement.length === 0
+
   return (
     <FormContainer>
       <section>
@@ -22,8 +29,12 @@ export const OrderForm = () => {
           <input type="text" placeholder="Rua" />
           <div>
             <input type="number" placeholder="Número" />
-            <OptionalInput>
-              <input type="text" placeholder="Complemento" />
+            <OptionalInput isComplementEmpty={isComplementEmpty}>
+              <input
+                type="text"
+                placeholder="Complemento"
+                {...register('complement')}
+              />
             </OptionalInput>
           </div>
           <div>

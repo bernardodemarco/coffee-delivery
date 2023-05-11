@@ -61,26 +61,6 @@ export const InputsContainer = styled.div`
     gap: 0.75rem;
   }
 
-  div:nth-of-type(1) {
-    & > input {
-      width: 12.5rem;
-    }
-  }
-
-  div:nth-of-type(2) {
-    input:nth-of-type(1) {
-      width: 12.5rem;
-    }
-
-    input:nth-of-type(2) {
-      flex: 1;
-    }
-
-    input:nth-of-type(3) {
-      width: 3.75rem;
-    }
-  }
-
   input {
     display: block;
     padding: 0.75rem;
@@ -95,22 +75,34 @@ export const InputsContainer = styled.div`
     transition: border 0.125s ease-in-out;
   }
 
-  input:nth-child(1) {
+  input:nth-of-type(1) {
     width: 12.5rem;
+  }
+
+  div:nth-of-type(2) {
+    input:nth-of-type(2) {
+      flex: 1;
+    }
+
+    input:nth-of-type(3) {
+      width: 3.75rem;
+    }
   }
 
   input::placeholder {
     color: ${({ theme }) => theme['base-label']};
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
   }
 
   input:focus {
     border: 1px solid ${({ theme }) => theme['yellow-dark']};
   }
 `
-export const OptionalInput = styled.div`
+
+interface OptionalInputProps {
+  isComplementEmpty: boolean
+}
+
+export const OptionalInput = styled.div<OptionalInputProps>`
   position: relative;
   flex: 1;
   display: flex;
@@ -120,18 +112,19 @@ export const OptionalInput = styled.div`
   }
 
   &::after {
-    content: 'djkdnço';
-    position: absolute;
-    right: 8px;
-    top: 50%;
-    font-size: 15px;
-    transform: translateY(-50%);
-    color: #ccc;
-  }
+    display: ${({ isComplementEmpty }) =>
+      isComplementEmpty ? 'block' : 'none'};
 
-  &:focus-within {
-    &::after {
-      display: none;
-    }
+    content: 'Opcional';
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+
+    color: ${({ theme }) => theme['base-label']};
+    font-size: 0.75rem;
+    line-height: 1.3;
+    font-weight: 400;
+    font-style: italic;
   }
 `
