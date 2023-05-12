@@ -17,6 +17,12 @@ export const FormContainer = styled.div`
     flex-direction: column;
     gap: 2rem;
   }
+
+  @media screen and (max-width: 44.375rem) {
+    & {
+      width: 85vw;
+    }
+  }
 `
 
 interface FormInfoProps {
@@ -96,6 +102,19 @@ export const InputsContainer = styled.div`
   input:focus {
     border: 1px solid ${({ theme }) => theme['yellow-dark']};
   }
+
+  @media screen and (max-width: 44.375rem) {
+    & > div {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    input:nth-of-type(1),
+    div:nth-of-type(2) input:nth-of-type(2),
+    div:nth-of-type(2) input:nth-of-type(3) {
+      width: 100%;
+    }
+  }
 `
 
 // interface OptionalInputProps {
@@ -124,24 +143,58 @@ export const OptionalInput = styled.div`
     font-weight: 400;
     font-style: italic;
   }
+
+  @media screen and (max-width: 44.375rem) {
+    & {
+      width: 100%;
+    }
+  }
 `
 
 export const PaymentMethod = styled.div`
+  align-self: center;
+
   display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 
   input {
-    appearance: none;
-    margin: 0;
-  }
-
-  input:checked + label {
+    display: none;
   }
 
   label {
     display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    background-color: ${({ theme }) => theme['base-button']};
+    border-radius: 6px;
+    padding: 1rem;
+
+    transition: background-color 0.25s ease-in-out;
 
     svg {
       color: ${({ theme }) => theme.purple};
     }
+
+    p {
+      text-transform: uppercase;
+      font-weight: 400;
+      font-size: 0.75rem;
+      line-height: 1.6;
+      color: ${({ theme }) => theme['base-text']};
+      width: 7.1875rem;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: ${({ theme }) => theme['base-hover']};
+    }
+  }
+
+  input:checked + label {
+    background-color: ${({ theme }) => theme['purple-light']};
+    border: 1px solid ${({ theme }) => theme.purple};
   }
 `

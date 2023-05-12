@@ -7,7 +7,7 @@ export const SelectedCoffees = () => {
       <div>
         <InlineCoffeeCard />
         <InlineCoffeeCard />
-        <InlineCoffeeCard />
+        {/* <InlineCoffeeCard /> */}
       </div>
       <PriceInfo>
         <div>

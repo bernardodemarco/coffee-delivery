@@ -30,6 +30,16 @@ export const SelectedCoffeesContainer = styled.div`
       background-color: ${({ theme }) => theme['yellow-dark']};
     }
   }
+
+  @media screen and (max-width: 44.375rem) {
+    & {
+      width: 85vw;
+    }
+
+    & > div {
+      width: 100%;
+    }
+  }
 `
 
 export const PriceInfo = styled.div`

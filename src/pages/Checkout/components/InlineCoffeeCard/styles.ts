@@ -30,6 +30,20 @@ export const Card = styled.article`
     line-height: 1.3;
     color: ${({ theme }) => theme['base-text']};
   }
+
+  @media screen and (max-width: 44.375rem) {
+    & {
+      width: 100%;
+
+      img {
+        display: none;
+      }
+
+      strong {
+        margin-left: 1rem;
+      }
+    }
+  }
 `
 
 export const InfoContainer = styled.div`
@@ -47,6 +61,12 @@ export const InfoContainer = styled.div`
   & > div {
     display: flex;
     align-items: center;
+  }
+
+  @media screen and (max-width: 44.375rem) {
+    p {
+      margin-bottom: 0.5rem;
+    }
   }
 `
 
