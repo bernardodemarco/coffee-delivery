@@ -16,7 +16,7 @@ export const Header = ({ numOfItems }: HeaderProps) => {
       <div>
         <LocationCard>
           <MapPin size={22} weight="fill" />
-          <span>Porto Alegre, RS</span>
+          <span>Florianópolis, SC</span>
         </LocationCard>
         <Link to={'/checkout'}>
           <ShoppingCartCard>
