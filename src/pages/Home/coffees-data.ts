@@ -1,7 +1,10 @@
-import { CoffeeCardProps } from './components/CoffeeCard'
-
-export interface Coffee extends CoffeeCardProps {
+export interface Coffee {
   id: number
+  imageSource: string
+  labels: ('tradicional' | 'gelado' | 'com leite' | 'especial' | 'alcoólico')[]
+  title: string
+  description: string
+  price: number
 }
 
 export const coffees: Coffee[] = [

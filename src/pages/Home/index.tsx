@@ -13,6 +13,7 @@ export const Home = () => {
           {coffees.map((coffee) => (
             <CoffeeCard
               key={coffee.id}
+              id={coffee.id}
               imageSource={coffee.imageSource}
               labels={coffee.labels}
               title={coffee.title}
