@@ -12,8 +12,11 @@ import {
   OptionalInput,
   PaymentMethod,
 } from './styles'
+import { useFormContext } from 'react-hook-form'
 
 export const OrderForm = () => {
+  const { register } = useFormContext()
+
   return (
     <FormContainer>
       <section>
@@ -25,18 +28,26 @@ export const OrderForm = () => {
           </div>
         </FormInfo>
         <InputsContainer>
-          <input type="text" placeholder="CEP" />
-          <input type="text" placeholder="Rua" />
+          <input type="text" placeholder="CEP" {...register('cep')} />
+          <input type="text" placeholder="Rua" {...register('street')} />
           <div>
-            <input type="number" placeholder="Número" />
+            <input type="number" placeholder="Número" {...register('number')} />
             <OptionalInput>
-              <input type="text" placeholder="Complemento" />
+              <input
+                type="text"
+                placeholder="Complemento"
+                {...register('complement')}
+              />
             </OptionalInput>
           </div>
           <div>
-            <input type="text" placeholder="Bairro" />
-            <input type="text" placeholder="Cidade" />
-            <input type="text" placeholder="UF" />
+            <input
+              type="text"
+              placeholder="Bairro"
+              {...register('neighborhood')}
+            />
+            <input type="text" placeholder="Cidade" {...register('city')} />
+            <input type="text" placeholder="UF" {...register('state')} />
           </div>
         </InputsContainer>
       </section>
