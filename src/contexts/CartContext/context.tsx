@@ -1,15 +1,21 @@
-import React, { useState } from 'react'
+import React, { useReducer } from 'react'
 
 import { Coffee } from '../../pages/Home/coffees-data'
+import { cartReducer } from './reducer'
+import {
+  addCoffeeToCartAction,
+  removeCoffeeFromCartAction,
+  updateCoffeeQuantityAction,
+} from './actions'
 
-interface CartCoffee extends Coffee {
+export interface CartCoffee extends Coffee {
   quantity: number
 }
 
 interface CartContextType {
   addCoffeeToCart: (coffeeData: CartCoffee) => void
   removeCoffeeFromCart: (id: number) => void
-  updateCoffeeQuantity: (id: number, newQuantity: number) => void
+  updateCoffeeQuantity: (id: number, newCoffeeQuantity: number) => void
   cartCoffees: CartCoffee[]
 }
 
@@ -20,38 +26,27 @@ interface CartContextProviderProps {
 export const CartContext = React.createContext({} as CartContextType)
 
 export const CartContextProvider = ({ children }: CartContextProviderProps) => {
-  const [cartCoffees, setCartCoffees] = useState<CartCoffee[]>([])
+  const [cartCoffees, dispatch] = useReducer(cartReducer, [])
 
-  const addCoffeeToCart = (coffeeData: CartCoffee): void => {
-    setCartCoffees((prevCoffees) => [...prevCoffees, coffeeData])
+  const addCoffeeToCart = (coffeeData: CartCoffee) => {
+    dispatch(addCoffeeToCartAction(coffeeData))
   }
 
-  const removeCoffeeFromCart = (id: number): void => {
-    setCartCoffees((prevCoffees) => {
-      return prevCoffees.filter((coffee) => {
-        return coffee.id !== id
-      })
-    })
+  const removeCoffeeFromCart = (id: number) => {
+    dispatch(removeCoffeeFromCartAction(id))
   }
 
-  const updateCoffeeQuantity = (id: number, newQuantity: number): void => {
-    setCartCoffees((prevCoffees) => {
-      return prevCoffees.map((coffee) => {
-        if (coffee.id !== id) {
-          return coffee
-        }
-        return { ...coffee, quantity: newQuantity }
-      })
-    })
+  const updateCoffeeQuantity = (id: number, newCoffeeQuantity: number) => {
+    dispatch(updateCoffeeQuantityAction(id, newCoffeeQuantity))
   }
 
   return (
     <CartContext.Provider
       value={{
-        cartCoffees,
         addCoffeeToCart,
         removeCoffeeFromCart,
         updateCoffeeQuantity,
+        cartCoffees,
       }}
     >
       {children}

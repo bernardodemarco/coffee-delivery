@@ -1,49 +1,38 @@
 import { Minus, Plus, Trash } from '@phosphor-icons/react'
 import { Card, RemoveContainer, InfoContainer, InputContainer } from './styles'
-import React, { useRef } from 'react'
+import { useContext } from 'react'
+import { CartContext } from '../../../../contexts/CartContext/context'
 
 interface InlineCoffeeCardProps {
   id: number
   imageSource: string
   title: string
   price: number
+  quantity: number
 }
 
 export const InlineCoffeeCard = ({
-  // id,
+  id,
   imageSource,
   title,
   price,
+  quantity,
 }: InlineCoffeeCardProps) => {
-  const priceDigits = String(price).split('.')
-  const quantityInputRef = useRef<HTMLInputElement>(null)
+  const { updateCoffeeQuantity, removeCoffeeFromCart } = useContext(CartContext)
+
+  const handleDeleteCoffee = () => {
+    removeCoffeeFromCart(id)
+  }
 
   const handleIncrementCoffeeQuantity = () => {
-    if (quantityInputRef.current) {
-      quantityInputRef.current.value = String(
-        parseInt(quantityInputRef.current.value) + 1,
-      )
-    }
+    updateCoffeeQuantity(id, quantity + 1)
   }
 
   const handleDecrementCoffeeQuantity = () => {
-    if (quantityInputRef.current) {
-      quantityInputRef.current.value = String(
-        parseInt(quantityInputRef.current.value) - 1,
-      )
-    }
+    updateCoffeeQuantity(id, quantity - 1)
   }
 
-  const handleCoffeeQuantityChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    if (quantityInputRef.current) {
-      if (parseInt(e.target.value) < 1) {
-        quantityInputRef.current.value = '1'
-      }
-      quantityInputRef.current.value = String(e.target.value)
-    }
-  }
+  const priceDigits = String(price).split('.')
 
   return (
     <Card>
@@ -54,16 +43,10 @@ export const InlineCoffeeCard = ({
           <div>
             <InputContainer>
               <Plus size={14} onClick={handleIncrementCoffeeQuantity} />
-              <input
-                type="number"
-                ref={quantityInputRef}
-                defaultValue={1}
-                min={0}
-                onChange={handleCoffeeQuantityChange}
-              />
+              <span>{quantity}</span>
               <Minus size={14} onClick={handleDecrementCoffeeQuantity} />
             </InputContainer>
-            <RemoveContainer>
+            <RemoveContainer onClick={handleDeleteCoffee}>
               <Trash size={16} />
               <span>remover</span>
             </RemoveContainer>

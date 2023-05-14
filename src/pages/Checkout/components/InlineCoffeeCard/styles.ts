@@ -72,6 +72,18 @@ export const InfoContainer = styled.div`
 
 export const InputContainer = styled(BaseInputContainer)`
   height: 2rem;
+
+  & > span {
+    border: none;
+    background: none;
+    width: 1.25rem;
+
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.3;
+    text-align: center;
+    color: ${({ theme }) => theme['base-title']};
+  }
 `
 
 export const RemoveContainer = styled.div`
