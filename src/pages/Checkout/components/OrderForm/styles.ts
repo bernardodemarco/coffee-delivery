@@ -18,6 +18,24 @@ export const FormContainer = styled.div`
     gap: 2rem;
   }
 
+  & > div {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    p {
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 1rem;
+      line-height: 1.3;
+      color: #bb3e03;
+    }
+
+    svg {
+      color: #bb3e03;
+    }
+  }
+
   @media screen and (max-width: 44.375rem) {
     & {
       width: 85vw;
@@ -117,11 +135,11 @@ export const InputsContainer = styled.div`
   }
 `
 
-// interface OptionalInputProps {
-//   isComplementEmpty: boolean
-// }
+interface OptionalInputProps {
+  isComplementFilled: boolean
+}
 
-export const OptionalInput = styled.div`
+export const OptionalInput = styled.div<OptionalInputProps>`
   position: relative;
   flex: 1;
   display: flex;
@@ -136,6 +154,8 @@ export const OptionalInput = styled.div`
     right: 0.75rem;
     top: 50%;
     transform: translateY(-50%);
+    display: ${({ isComplementFilled }) =>
+      isComplementFilled ? 'none' : 'block'};
 
     color: ${({ theme }) => theme['base-label']};
     font-size: 0.75rem;
