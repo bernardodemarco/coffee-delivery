@@ -4,6 +4,9 @@ import { CheckoutForm } from './styles'
 import { useForm, FormProvider } from 'react-hook-form'
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import { CartContext } from '../../contexts/CartContext/context'
 
 const orderFormSchema = zod.object({
   cep: zod
@@ -27,13 +30,28 @@ const orderFormSchema = zod.object({
 export type OrderFormSchema = zod.infer<typeof orderFormSchema>
 
 export const Checkout = () => {
+  const navigate = useNavigate()
+  const { cartCoffees, resetCart } = useContext(CartContext)
+
   const newOrderForm = useForm<OrderFormSchema>({
     resolver: zodResolver(orderFormSchema),
   })
   const { handleSubmit } = newOrderForm
 
   const handleCreateNewOrder = (data: OrderFormSchema) => {
-    console.log('FORM DATA', data)
+    if (cartCoffees.length > 0) {
+      resetCart()
+      navigate('/success', {
+        state: {
+          street: data.street,
+          city: data.city,
+          state: data.state,
+          number: data.number,
+          neighborhood: data.neighborhood,
+          paymentMethod: data['payment-method'],
+        },
+      })
+    }
   }
 
   return (

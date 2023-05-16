@@ -4,6 +4,7 @@ export enum ActionTypes {
   ADD_NEW_COFFEE = 'ADD_NEW_COFFEE',
   REMOVE_COFFEE = 'REMOVE_COFFEE',
   SET_COFFEE_QUANTITY = 'SET_COFFEE_QUANTITY',
+  RESET_CART = 'RESET_CART',
 }
 
 export const addCoffeeToCartAction = (coffeeData: CartCoffee) => {
@@ -34,5 +35,11 @@ export const updateCoffeeQuantityAction = (
       id,
       newCoffeeQuantity,
     },
+  }
+}
+
+export const resetCartAction = () => {
+  return {
+    type: ActionTypes.RESET_CART,
   }
 }

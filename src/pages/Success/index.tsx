@@ -2,8 +2,36 @@ import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
 import { IconBackgroundColors, RoundIcon } from '../../components/RoundIcon'
 import orderCompleted from './../../assets/order-completed.svg'
 import { Grid, PageContainer } from './styles'
+import { useLocation } from 'react-router-dom'
+
+type PaymentMethodOptions = 'credit-card' | 'debit-card' | 'cash'
+
+interface SuccessProps {
+  state: {
+    street: string
+    city: string
+    state: string
+    neighborhood: string
+    number: number
+    paymentMethod: PaymentMethodOptions
+  }
+}
 
 export const Success = () => {
+  const { state: props }: SuccessProps = useLocation()
+
+  const parsePaymentMethod = (paymentMethod: PaymentMethodOptions): string => {
+    if (paymentMethod === 'credit-card') {
+      return 'Cartão de Crédito'
+    }
+
+    if (paymentMethod === 'debit-card') {
+      return 'Cartão de Débito'
+    }
+
+    return 'Dinheiro'
+  }
+
   return (
     <PageContainer>
       <div>
@@ -18,9 +46,14 @@ export const Success = () => {
             </RoundIcon>
             <div>
               <p>
-                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                Entrega em{' '}
+                <strong>
+                  Rua {props.street}, {props.number}
+                </strong>
               </p>
-              <p>Farrapos - Porto Alegre, RS</p>
+              <p>
+                {props.neighborhood} - {props.city}, {props.state}
+              </p>
             </div>
           </article>
           <article>
@@ -41,7 +74,7 @@ export const Success = () => {
             <div>
               <p>Pagamento na entrega</p>
               <p>
-                <strong>Cartão de crédito</strong>
+                <strong>{parsePaymentMethod(props.paymentMethod)}</strong>
               </p>
             </div>
           </article>

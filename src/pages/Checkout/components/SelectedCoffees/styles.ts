@@ -25,9 +25,13 @@ export const SelectedCoffeesContainer = styled.div`
 
     transition: background-color 0.25s ease-in-out;
 
-    &:hover {
+    &:not(:disabled):hover {
       cursor: pointer;
       background-color: ${({ theme }) => theme['yellow-dark']};
+    }
+
+    &:disabled {
+      cursor: not-allowed;
     }
   }
 

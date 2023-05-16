@@ -19,6 +19,7 @@ export const SelectedCoffees = () => {
     return totalPrice + coffee.price * coffee.quantity
   }, 0)
   const totalPrice = deliveryPrice + coffeesPrice
+  const isButtonDisabled = cartCoffees.length === 0
 
   return (
     <SelectedCoffeesContainer>
@@ -50,7 +51,7 @@ export const SelectedCoffees = () => {
           <strong>{parsePrice(totalPrice)}</strong>
         </div>
       </PriceInfo>
-      <button>confirmar pedido</button>
+      <button disabled={isButtonDisabled}>confirmar pedido</button>
     </SelectedCoffeesContainer>
   )
 }

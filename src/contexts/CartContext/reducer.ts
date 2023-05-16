@@ -41,6 +41,9 @@ export const cartReducer = (state: CartCoffee[], action: any) => {
         return { ...coffee, quantity: newCoffeeQuantity }
       })
     }
+    case ActionTypes.RESET_CART: {
+      return []
+    }
     default:
       return state
   }

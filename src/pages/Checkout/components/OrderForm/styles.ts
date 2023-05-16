@@ -28,11 +28,11 @@ export const FormContainer = styled.div`
       font-weight: 600;
       font-size: 1rem;
       line-height: 1.3;
-      color: #bb3e03;
+      color: ${({ theme }) => theme['yellow-dark']};
     }
 
     svg {
-      color: #bb3e03;
+      color: ${({ theme }) => theme['yellow-dark']};
     }
   }
 
