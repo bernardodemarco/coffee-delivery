@@ -2,7 +2,8 @@ import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
 import { IconBackgroundColors, RoundIcon } from '../../components/RoundIcon'
 import orderCompleted from './../../assets/order-completed.svg'
 import { Grid, PageContainer } from './styles'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 type PaymentMethodOptions = 'credit-card' | 'debit-card' | 'cash'
 
@@ -19,6 +20,13 @@ interface SuccessProps {
 
 export const Success = () => {
   const { state: props }: SuccessProps = useLocation()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!props) {
+      navigate('/')
+    }
+  }, [props, navigate])
 
   const parsePaymentMethod = (paymentMethod: PaymentMethodOptions): string => {
     if (paymentMethod === 'credit-card') {
@@ -30,6 +38,10 @@ export const Success = () => {
     }
 
     return 'Dinheiro'
+  }
+
+  if (!props) {
+    return <></>
   }
 
   return (
@@ -52,7 +64,7 @@ export const Success = () => {
                 </strong>
               </p>
               <p>
-                {props.neighborhood} - {props.city}, {props.state}
+                {props.neighborhood} - {props.city}, <span>{props.state}</span>
               </p>
             </div>
           </article>

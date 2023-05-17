@@ -64,6 +64,10 @@ export const Grid = styled.div`
     strong {
       font-weight: 700;
     }
+
+    & > div > p:nth-of-type(2) > span {
+      text-transform: uppercase;
+    }
   }
 
   @media screen and (max-width: 64rem) {

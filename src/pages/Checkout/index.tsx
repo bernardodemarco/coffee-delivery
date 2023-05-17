@@ -11,15 +11,15 @@ import { CartContext } from '../../contexts/CartContext/context'
 const orderFormSchema = zod.object({
   cep: zod
     .string()
-    .regex(/^\d{5}-?\d{3}$/, 'Insira o CEP no formato XXXXX-XXX'),
+    .regex(/^\d{5}-?\d{3}$/, 'Informe o CEP no formato XXXXX-XXX'),
   street: zod.string().min(1, 'Informe a rua'),
   complement: zod.string().optional(),
   neighborhood: zod.string().min(1, 'Informe o bairro'),
-  city: zod.string().min(1, 'Informe a rua'),
-  state: zod.string().length(2, 'Insira o estado no formato XX'),
+  city: zod.string().min(1, 'Informe a cidade'),
+  state: zod.string().length(2, 'Informe o estado no formato XX'),
   number: zod
     .number({
-      invalid_type_error: 'Insira um número',
+      invalid_type_error: 'Informe um número',
     })
     .gt(0, 'O número deve ser positivo'),
   'payment-method': zod.enum(['credit-card', 'debit-card', 'cash'], {
