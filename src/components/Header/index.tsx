@@ -1,6 +1,8 @@
 import { HeaderContainer, LocationCard, ShoppingCartCard } from './styles'
-import logo from './../../assets/main-logo.svg'
+
 import { MapPin, ShoppingCart } from '@phosphor-icons/react'
+import logo from './../../assets/main-logo.svg'
+
 import { Link } from 'react-router-dom'
 
 interface HeaderProps {

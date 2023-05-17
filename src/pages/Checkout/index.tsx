@@ -1,11 +1,14 @@
-import { SelectedCoffees } from './components/SelectedCoffees'
-import { OrderForm } from './components/OrderForm'
-import { CheckoutForm } from './styles'
-import { useForm, FormProvider } from 'react-hook-form'
+import { useContext } from 'react'
+
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm, FormProvider } from 'react-hook-form'
+
 import { useNavigate } from 'react-router-dom'
-import { useContext } from 'react'
+
+import { CheckoutForm } from './styles'
+import { SelectedCoffees } from './components/SelectedCoffees'
+import { OrderForm } from './components/OrderForm'
 import { CartContext } from '../../contexts/CartContext/context'
 
 const orderFormSchema = zod.object({

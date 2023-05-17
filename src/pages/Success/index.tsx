@@ -1,9 +1,10 @@
-import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
-import { IconBackgroundColors, RoundIcon } from '../../components/RoundIcon'
-import orderCompleted from './../../assets/order-completed.svg'
-import { Grid, PageContainer } from './styles'
-import { useLocation, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+
+import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
+import { Grid, PageContainer } from './styles'
+import orderCompleted from './../../assets/order-completed.svg'
+import { IconBackgroundColors, RoundIcon } from '../../components/RoundIcon'
 
 type PaymentMethodOptions = 'credit-card' | 'debit-card' | 'cash'
 

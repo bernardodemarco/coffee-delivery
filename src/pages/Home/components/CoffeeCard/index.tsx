@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+
 import { Plus, Minus, ShoppingCartSimple } from '@phosphor-icons/react'
 import {
   BuyContainer,
@@ -7,6 +8,7 @@ import {
   InputContainer,
   Label,
 } from './styles'
+
 import { Coffee } from '../../coffees-data'
 import { CartContext } from '../../../../contexts/CartContext/context'
 

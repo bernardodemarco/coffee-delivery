@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer } from 'react'
 
 import { Coffee } from '../../pages/Home/coffees-data'
+
 import { cartReducer } from './reducer'
 import {
   addCoffeeToCartAction,

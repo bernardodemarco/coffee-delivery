@@ -1,5 +1,6 @@
-import { CartContext } from '../../../../contexts/CartContext/context'
 import { useContext } from 'react'
+import { CartContext } from '../../../../contexts/CartContext/context'
+
 import { InlineCoffeeCard } from '../InlineCoffeeCard'
 import { SelectedCoffeesContainer, PriceInfo } from './styles'
 

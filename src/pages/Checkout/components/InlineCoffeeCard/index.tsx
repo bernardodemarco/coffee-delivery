@@ -1,5 +1,6 @@
 import { Minus, Plus, Trash } from '@phosphor-icons/react'
 import { Card, RemoveContainer, InfoContainer, InputContainer } from './styles'
+
 import { useContext } from 'react'
 import { CartContext } from '../../../../contexts/CartContext/context'
 
